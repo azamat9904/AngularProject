@@ -1,0 +1,17 @@
+<header class = "header">
+ <div class = "header__container">
+   <app-logo [logoUrl] = "logo" ></app-logo>
+   <nav class = "nav">
+     <ul class="nav__list">
+       <ng-container *ngFor = "let navItem of navItems">
+         <li class="nav__item" *ngIf="!navItem.disabled">
+           <a [href]="navItem.url" class = "nav__link" [ngClass]="{disabled:navItem.url === ''}">{{navItem.content}}</a>
+         </li>
+       </ng-container>
+       <li class = "nav__item" *ngIf="isShown">
+         <button (click)="loginHandler()" class = "nav__btn">Login</button>
+       </li>
+     </ul>
+   </nav>
+ </div>
+</header>
