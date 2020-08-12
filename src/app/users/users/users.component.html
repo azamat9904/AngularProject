@@ -1,0 +1,20 @@
+<div class = "users" *ngIf = "users.length !== 0">
+  <table class = "table">
+      <tr>
+        <th class = "table__col">id</th>
+        <th class = "table__col">email</th>
+        <th class = "table__col">phone</th>
+        <th class = "table__col">website</th>
+        <th class = "table__col">company name</th>
+        <th class = "table__col">catch parse</th>
+      </tr>
+    <tr *ngFor = "let user of users" class = "table__row" (click) = "fetchUser(user.id)">
+      <td class = "table__col">{{user.id}}</td>
+      <td class = "table__col">{{user.email}}</td>
+      <td class = "table__col">{{user.phone}}</td>
+      <td class = "table__col">{{user.website}}</td>
+      <td class = "table__col">{{user.company.name}}</td>
+      <td class = "table__col">{{user.company.catchPhrase}}</td>
+    </tr>
+  </table>
+</div>

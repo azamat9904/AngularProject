@@ -1,0 +1,9 @@
+<div *ngIf="user" class = "user-detail">
+  <div style = "text-align: center;font-weight: 700;">User info</div>
+  <div class = "user" class = "user-detail__info">User name: {{user.name}}</div>
+  <div class = "user" class = "user-detail__info">User phone: {{user.phone}}</div>
+  <div class = "user" class = "user-detail__info">User website: {{user.website}}</div>
+  <div class = "user" class = "user-detail__info">User city: {{user.address.city}}</div>
+  <button class = "btn" (click) = "backHome()">Go back</button>
+</div>
+

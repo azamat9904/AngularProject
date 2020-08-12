@@ -1,0 +1,26 @@
+:host{
+  width: 100%;
+  padding: 15px;
+}
+.table{
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border:1px solid rgba(0,0,0,.2);
+  text-align: left;
+  th,tr,td{
+    border:inherit;
+  }
+
+  .table__row{
+    transition: .3s;
+    cursor: pointer;
+    &:hover{
+      background-color: #f0f0f0;
+    }
+  }
+  &__col{
+    padding: 15px;
+  }
+}
+

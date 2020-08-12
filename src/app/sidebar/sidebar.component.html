@@ -2,7 +2,7 @@
   <ul class="sidebar__list" *ngIf="sidebarItems.length !== 0">
       <ng-container *ngFor = "let sidebarItem of sidebarItems">
         <li class="sidebar__item" [ngClass]="{active:sidebarItem.active}">
-          <a [href]="sidebarItem.url" class="sidebar__link">{{sidebarItem.content}}</a>
+          <a [routerLink]="sidebarItem.url" class="sidebar__link">{{sidebarItem.content}}</a>
         </li>
       </ng-container>
   </ul>
