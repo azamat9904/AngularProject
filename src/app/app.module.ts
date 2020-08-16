@@ -10,8 +10,7 @@ import {HomeComponent} from './home/home.component';
 import {LogoComponent} from './logo/logo.component';
 import { LayoutComponent } from './layout/layout.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { UsersComponent } from './users/users/users.component';
-import { UserComponent } from './users/user/user.component';
+import {UserService} from './users/user.service';
 
 @NgModule({
   declarations: [
@@ -22,15 +21,13 @@ import { UserComponent } from './users/user/user.component';
     LogoComponent,
     LayoutComponent,
     NotFoundComponent,
-    UsersComponent,
-    UserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

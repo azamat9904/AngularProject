@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {User} from '../../shared/types';
-import {catchError} from 'rxjs/operators';
-import {of} from 'rxjs';
+import {map} from 'rxjs/operators';
 import {ActivatedRoute, Router} from '@angular/router';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-users',
@@ -15,22 +14,15 @@ export class UsersComponent implements OnInit {
   users: User[] = [];
 
   constructor(
-    private httpClient: HttpClient,
+    private userService:UserService,
     private router:Router,
     private route:ActivatedRoute
   ) {
   }
 
   ngOnInit(): void {
-    this.httpClient
-      .get<User[]>('https://jsonplaceholder.typicode.com/users')
-      .pipe(
-        catchError((err) => {
-          console.log('Error trying get Users', err);
-          return of([]);
-        }))
-      .subscribe(result => {
-        this.users = result;
+      this.userService.getUsers().subscribe(users => {
+        this.users = users;
       });
   }
   fetchUser(id:number){

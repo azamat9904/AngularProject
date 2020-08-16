@@ -3,7 +3,7 @@
   <div class = "user" class = "user-detail__info">User name: {{user.name}}</div>
   <div class = "user" class = "user-detail__info">User phone: {{user.phone}}</div>
   <div class = "user" class = "user-detail__info">User website: {{user.website}}</div>
-  <div class = "user" class = "user-detail__info">User city: {{user.address.city}}</div>
+  <div class = "user" class = "user-detail__info">User city: {{user.address | concat:'city':'street'}}</div>
   <button class = "btn" (click) = "backHome()">Go back</button>
 </div>
 

@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {ActivatedRoute, Params, Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../../shared/types';
+import {UserService} from '../user.service';
+import {catchError, mergeMap} from 'rxjs/operators';
+import {of} from 'rxjs';
 
 @Component({
   selector: 'app-user',
@@ -12,21 +14,20 @@ export class UserComponent implements OnInit {
   user: User;
 
   constructor(
-    private httpClient: HttpClient,
+    private userService:UserService,
     private route: ActivatedRoute,
     private router: Router
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      if (params && params.id) {
-        const id = +params.id;
-        this.httpClient.get<User>(`https://jsonplaceholder.typicode.com/users/${id}`).subscribe(user => {
-          this.user = user;
-        });
-      }
-    });
+    this.route.params
+      .pipe(
+        mergeMap(params => this.userService.getUser(params.id)),
+        catchError(err => of(null))
+      )
+      .subscribe(user =>{
+        this.user = user;
+      })
   }
 
   backHome() {
