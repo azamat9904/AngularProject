@@ -1,0 +1,25 @@
+<!--<div class="auth-wrapper">-->
+<!--  <div class="auth-form">-->
+<!--    <h1>Register</h1>-->
+<!--    <div class="error-wrapper" *ngIf="errorMessage">-->
+<!--      {{ errorMessage }}-->
+<!--    </div>-->
+<!--    <input class="form-control" name="username" placeholder="Username" [(ngModel)]="username" />-->
+<!--    <input class="form-control" name="password" placeholder="Password" type="password" [(ngModel)]="password"  />-->
+<!--    <button type="button" (click)="onSubmit()">Sign up</button>-->
+<!--  </div>-->
+
+<!--</div>-->
+
+<div class="container">
+  <form class = "form" [formGroup]="form">
+    <h4 class = "form__heading">Register your account</h4>
+    <div class="form__error" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+    <input type="email" placeholder="Enter your email" class = "form__control" name="username" formControlName="username"/>
+    <input type="password" placeholder="Enter your password" class = "form__control" name="username" formControlName="password"/>
+    <button class = "btn" (click)="onSubmit()" >Sign up</button>
+    <a [routerLink]="['../login']"  class = "form__link">Login to your account</a>
+  </form>
+</div>

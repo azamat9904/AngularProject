@@ -8,9 +8,20 @@
            <a [routerLink]="navItem.url" class = "nav__link" [ngClass]="{disabled:navItem.url === ''}">{{navItem.content}}</a>
          </li>
        </ng-container>
-       <li class = "nav__item" *ngIf="isShown">
-         <button routerLink="/auth" class = "nav__btn">Login</button>
+       <li class="nav__item" *ngIf="!isLogginIn; else showLogout">
+         <a
+           [routerLink]="['/auth/login']"
+         >
+           Login</a>
        </li>
+       <ng-template #showLogout>
+         <li class="nav__item">
+           <a
+             (click) = "onLogout()"
+           >
+             Logout</a>
+         </li>
+       </ng-template>
      </ul>
    </nav>
  </div>

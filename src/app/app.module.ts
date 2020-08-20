@@ -11,6 +11,7 @@ import {LogoComponent} from './logo/logo.component';
 import { LayoutComponent } from './layout/layout.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import {UserService} from './users/user.service';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {UserService} from './users/user.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    AuthModule,
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

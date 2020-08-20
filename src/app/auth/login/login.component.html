@@ -1,0 +1,26 @@
+<div class="container">
+  <form class="form" [formGroup]="form">
+    <h4 class="form__heading">Sign in to your account</h4>
+    <div class="form__error" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+    <div class="form__group">
+      <input type="email" placeholder="Enter your email" class="form__control" name = "username" formControlName="username"/>
+      <div class="form__error--text" *ngIf="form.get('username').touched && form.get('username').invalid">
+        <span *ngIf="form.get('username').errors.required">This field is required</span>
+        <span *ngIf="form.get('username').errors.email">Please enter valid email address</span>
+      </div>
+    </div>
+    <div class="form__group">
+      <input type="password" placeholder="Enter your password" class="form__control" name = "password" formControlName="password"/>
+      <div class="form__error--text" *ngIf="form.get('password').touched && form.get('password').invalid">
+        <span *ngIf="form.get('password').errors.required">This field is required</span>
+      </div>
+    </div>
+    <button type="button" class = "btn" (click)="onSubmit()">Log in</button>
+    <a class="form__link" [routerLink]="['../register']">Register</a>
+  </form>
+</div>
+
+
+
