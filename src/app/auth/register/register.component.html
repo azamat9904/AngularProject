@@ -1,12 +1,24 @@
 <div class="container">
-  <form class = "form" [formGroup]="form">
-    <h4 class = "form__heading">Register your account</h4>
+  <form class="form" [formGroup]="form">
+    <h4 class="form__heading">Register your account</h4>
     <div class="form__error" *ngIf="errorMessage">
       {{ errorMessage }}
     </div>
-    <input type="email" placeholder="Enter your email" class = "form__control" name="username" formControlName="username"/>
-    <input type="password" placeholder="Enter your password" class = "form__control" name="username" formControlName="password"/>
-    <button class = "btn" (click)="onSubmit()" >Sign up</button>
-    <a [routerLink]="['../login']"  class = "form__link">Login to your account</a>
+    <div class="form__group">
+      <input type="email" placeholder="Enter your email" class="form__control" name="username"
+             formControlName="username"/>
+      <div class="form__error--text" *ngIf="form.get('username').touched && form.get('username').invalid">
+        <span *ngIf="form.get('username').errors.required">This field is required</span>
+      </div>
+    </div>
+    <div class="form__group">
+      <input type="password" placeholder="Enter your password" class="form__control" name="username"
+             formControlName="password"/>
+      <div class="form__error--text" *ngIf="form.get('password').touched && form.get('password').invalid">
+        <span *ngIf="form.get('password').errors.required">This field is required</span>
+      </div>
+    </div>
+    <button class="btn" (click)="onSubmit()">Sign up</button>
+    <a [routerLink]="['../login']" class="form__link">Login to your account</a>
   </form>
 </div>

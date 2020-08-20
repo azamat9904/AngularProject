@@ -24,14 +24,14 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      username: new FormControl('', [Validators.required, Validators.email]),
+      username: new FormControl('', [Validators.required]),
       password: new FormControl('', Validators.required),
     });
   }
 
   onSubmit() {
 
-    if (!this.form.get('username').value || !this.form.get('password').value) {
+    if (this.form.invalid) {
       return;
     }
 
@@ -41,7 +41,6 @@ export class RegisterComponent implements OnInit {
       .pipe(
         catchError((err: HttpErrorResponse) => {
           this.errorMessage = err.error ? err.error.message : err.message;
-          this.form.reset();
           return EMPTY;
         })
       )
